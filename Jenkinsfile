@@ -20,7 +20,7 @@ pipeline{
     }  
     stage('Build'){
       steps{
-        sh './venv/bin/python -m py_compile app.py'
+        sh './venv/bin/python -m py_compile ./demo-app/app.py'
       }
     }
 
