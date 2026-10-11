@@ -4,6 +4,9 @@ pipeline{
   options{
     timestamps()
   }
+  triggers{
+    pollSCM('H/5 * * * *')
+  }
 
   stages{
     stage('Checkout'){
@@ -26,7 +29,7 @@ pipeline{
 
     stage('Test'){
       steps{
-        sh './venv/bin/pytest --junitxml=result.xml'
+        sh './venv/bin/pytest --junitxml=result.xml --cov=. --cov-report=xml:coverage.xml --cov-report=term'
       }
     }
   }
